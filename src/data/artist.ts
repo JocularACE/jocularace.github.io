@@ -16,7 +16,7 @@ export const artist = {
   platforms: {
     netease: {
       label: '网易云音乐',
-      url: 'https://music.163.com/#/artist/album?id=12538073',
+      url: 'https://music.163.com/#/artist/album?id=34470114',
     },
     bilibili: {
       label: 'Bilibili',
