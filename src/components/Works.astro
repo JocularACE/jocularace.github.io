@@ -1,0 +1,71 @@
+---
+import { works } from '../data/artist';
+
+const categories = [
+  { id: 'dancefloor' as const, label: '为舞池而生', sub: 'Dancefloor' },
+  { id: 'game'       as const, label: '为游戏而生', sub: 'Rhythm Games' },
+  { id: 'narrative'  as const, label: '为故事而写', sub: 'Narrative' },
+] as const;
+---
+
+<section id="works" class="py-24 px-6 texture-h-lines">
+  <div class="relative z-10 max-w-6xl mx-auto space-y-20">
+
+    <!-- Section header -->
+    <div class="reveal">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-fg mb-3">Discography</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">作品陈列室</h2>
+    </div>
+
+    {categories.map(cat => {
+      const items = works.filter(w => w.category === cat.id);
+      return (
+        <div class="reveal">
+          <!-- Category label with 4px rule -->
+          <div class="border-t-4 border-black pt-5 mb-6">
+            <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-fg mb-1">{cat.sub}</p>
+            <h3 class="font-display text-2xl font-bold">{cat.label}</h3>
+          </div>
+
+          <!--
+            bg-black + gap-px trick: grid background shows as 1px black lines between white cells.
+            Clean collapsed-border effect with no z-index issues.
+          -->
+          <div
+            class="bg-black"
+            style={`display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px;`}
+          >
+            {items.map(w => (
+              <div class="card-invert bg-white p-7 flex flex-col">
+                <!-- Vinyl sleeve placeholder — minimal box -->
+                <div
+                  class="border border-black/15 group-hover:border-white/15 mb-6 flex items-center justify-center text-muted-fg"
+                  style="height: 72px;"
+                >
+                  <span class="font-mono text-[9px] uppercase tracking-[0.3em]">{cat.sub}</span>
+                </div>
+
+                <h4 class="font-display text-lg font-bold leading-snug mb-1">{w.title}</h4>
+
+                {w.collab
+                  ? <p class="font-mono text-[10px] tracking-widest text-muted-fg invert-child mb-4">× {w.collab}</p>
+                  : <div class="mb-4"></div>
+                }
+
+                <p class="font-body text-sm text-muted-fg invert-child leading-relaxed mb-6 flex-1">
+                  {w.desc}
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  {w.tags.map(t => <span class="tag">{t}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<div class="rule-4"></div>

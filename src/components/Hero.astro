@@ -1,0 +1,85 @@
+---
+import { artist } from '../data/artist';
+---
+
+<section class="relative min-h-screen flex flex-col justify-end pb-24 pt-36 px-6 texture-h-lines overflow-hidden">
+
+  <div class="relative z-10 max-w-6xl mx-auto w-full">
+
+    <!-- ── Eyebrow label ── -->
+    <p class="font-mono text-xs uppercase tracking-[0.3em] text-muted-fg mb-8 reveal">
+      Electronic Music Producer · Visual Artist · Label Owner
+    </p>
+
+    <!-- ── MAIN NAME — dominant typographic statement ── -->
+    <h1
+      class="font-display font-black tracking-tighter leading-none text-black reveal"
+      style="font-size: clamp(4rem, 14vw, 10rem);"
+    >
+      {artist.name}
+    </h1>
+
+    <!-- ── Decorative rule + square (design-system required element) ── -->
+    <div class="flex items-center gap-4 my-6 reveal">
+      <div class="h-1 bg-black flex-1 max-w-[200px]" style="height:4px;"></div>
+      <div class="border-2 border-black" style="width:12px; height:12px; flex-shrink:0;"></div>
+    </div>
+
+    <!-- ── Chinese name + alias ── -->
+    <p class="font-mono text-base sm:text-lg tracking-[0.25em] text-black/60 mb-8 reveal">
+      {artist.chineseName}
+      <span class="mx-4 text-black/20">/</span>
+      {artist.alias}
+    </p>
+
+    <!-- ── Slogan — italic editorial serif ── -->
+    <p class="font-display italic text-2xl sm:text-3xl text-black leading-snug max-w-xl mb-10 reveal">
+      {artist.slogan}
+    </p>
+
+    <!-- ── Genre tags ── -->
+    <div class="flex flex-wrap gap-2 mb-12 reveal">
+      {artist.genres.map(g => <span class="tag">{g}</span>)}
+    </div>
+
+    <!-- ── CTAs ── -->
+    <div class="flex flex-wrap items-center gap-4 mb-16 reveal">
+      <a
+        href={artist.platforms.netease.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+      >
+        {artist.platforms.netease.label} ↗
+      </a>
+      <a
+        href={artist.platforms.bilibili.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline"
+      >
+        Bilibili ↗
+      </a>
+    </div>
+
+    <!-- ── Scroll indicator ── -->
+    <div class="flex items-center gap-4 reveal">
+      <div class="rule-light flex-1 max-w-[80px]"></div>
+      <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-muted-fg">Scroll ↓</span>
+    </div>
+
+  </div>
+
+  <!-- ── Floating column number (decorative) ── -->
+  <p
+    class="absolute bottom-24 right-8 font-mono text-[10px] tracking-widest text-black/15 hidden lg:block"
+    style="writing-mode: vertical-rl;"
+    aria-hidden="true"
+  >
+    © {new Date().getFullYear()} JOCULARACE
+  </p>
+
+</section>
+
+<!-- Section rule -->
+<div class="rule-4"></div>

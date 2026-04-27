@@ -1,0 +1,67 @@
+---
+import { artist } from '../data/artist';
+
+const marqueeText = `${artist.name} · ${artist.chineseName} · ${artist.alias} · Electronic Music Producer · Visual Artist · Label Owner · `;
+---
+
+<footer class="pt-0 pb-10 px-0 border-t-0">
+
+  <!-- ── Marquee band ── -->
+  <div class="border-t border-b border-black/10 py-4 overflow-hidden bg-muted">
+    <div class="marquee-track whitespace-nowrap">
+      {[...Array(4)].map(() => (
+        <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-fg/60 px-2">
+          {marqueeText}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- ── Main footer content ── -->
+  <div class="px-6 pt-12 pb-8 max-w-6xl mx-auto">
+
+    <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-8 mb-10">
+
+      <!-- Left: Branding -->
+      <div>
+        <p class="font-display text-2xl italic font-bold tracking-tight text-black mb-1">
+          {artist.name}
+        </p>
+        <p class="font-mono text-[10px] uppercase tracking-widest text-muted-fg">
+          {artist.chineseName} · {artist.alias}
+        </p>
+      </div>
+
+      <!-- Center: Links -->
+      <div class="flex items-center gap-8">
+        <a
+          href={artist.platforms.netease.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-mono text-xs text-muted-fg hover:text-black border-b border-transparent hover:border-black transition-colors duration-100 pb-0.5"
+        >
+          网易云音乐 ↗
+        </a>
+        <a
+          href={artist.platforms.bilibili.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-mono text-xs text-muted-fg hover:text-black border-b border-transparent hover:border-black transition-colors duration-100 pb-0.5"
+        >
+          Bilibili ↗
+        </a>
+      </div>
+
+      <!-- Right: Copyright -->
+      <p class="font-mono text-[10px] text-muted-fg/50 tracking-wide">
+        © {new Date().getFullYear()} JocularACE
+      </p>
+    </div>
+
+    <!-- Bottom thin rule + legal -->
+    <div class="rule-light mb-4"></div>
+    <p class="font-mono text-[10px] text-muted-fg/40 tracking-widest">
+      All rights reserved. · Built with Astro.
+    </p>
+  </div>
+</footer>

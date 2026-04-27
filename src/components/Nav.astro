@@ -1,0 +1,70 @@
+---
+const links = [
+  { href: '#works',    label: '作品' },
+  { href: '#services', label: '合作' },
+  { href: '#timeline', label: '年表' },
+];
+---
+
+<header
+  id="nav"
+  class="fixed top-0 inset-x-0 z-50 transition-colors duration-150"
+>
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-5">
+
+    <!-- Logo -->
+    <a
+      href="#"
+      class="font-display text-xl italic font-bold tracking-tight text-black leading-none
+             focus-visible:outline focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-4"
+    >
+      JACE
+    </a>
+
+    <!-- Links -->
+    <ul class="hidden sm:flex items-center gap-10">
+      {links.map(l => (
+        <li>
+          <a
+            href={l.href}
+            class="font-mono text-xs uppercase tracking-widest text-black/60 hover:text-black
+                   border-b border-transparent hover:border-black transition-colors duration-100
+                   focus-visible:outline focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-4 pb-0.5"
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA -->
+    <a
+      href="https://music.163.com/#/artist/album?id=12538073"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-outline !py-2 !px-5 !text-[11px]"
+    >
+      Listen ↗
+    </a>
+  </nav>
+
+  <!-- Bottom rule (appears on scroll) -->
+  <div id="nav-rule" class="h-px bg-black scale-x-0 origin-left transition-transform duration-200"></div>
+</header>
+
+<script>
+  const nav   = document.getElementById('nav')!;
+  const rule  = document.getElementById('nav-rule')!;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.classList.add('bg-white');
+      rule.classList.remove('scale-x-0');
+      rule.classList.add('scale-x-100');
+    } else {
+      nav.classList.remove('bg-white');
+      rule.classList.add('scale-x-0');
+      rule.classList.remove('scale-x-100');
+    }
+  }, { passive: true });
+</script>

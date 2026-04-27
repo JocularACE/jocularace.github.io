@@ -1,0 +1,59 @@
+---
+import { collabs } from '../data/artist';
+---
+
+<section class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <div class="reveal mb-12">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-fg mb-3">Collaborations</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">深度合作</h2>
+    </div>
+
+    <!-- Editorial table -->
+    <div class="reveal">
+      <!-- Table header -->
+      <div class="border-t-4 border-black border-b-2 border-b-black py-3
+                  hidden sm:grid grid-cols-[48px_1fr_200px_1fr] gap-6">
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-fg">#</span>
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-fg">Project</span>
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-fg">Artists</span>
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-fg">Note</span>
+      </div>
+
+      <!-- Rows -->
+      {collabs.map((c, i) => (
+        <div class="group border-b border-border-lt hover:bg-muted transition-colors duration-100
+                    grid grid-cols-1 sm:grid-cols-[48px_1fr_200px_1fr] gap-2 sm:gap-6 py-5 px-2 -mx-2">
+
+          <span class="font-mono text-[10px] text-muted-fg self-start pt-1">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+
+          <h4 class="font-display text-base font-semibold leading-snug group-hover:font-bold transition-all">
+            {c.project}
+          </h4>
+
+          <div class="flex flex-wrap gap-1.5 self-start">
+            {c.artists.map(a => (
+              <span class="tag">{a}</span>
+            ))}
+          </div>
+
+          <p class="font-body text-sm text-muted-fg leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Count footer -->
+    <div class="reveal mt-6 flex items-center gap-3">
+      <div class="rule-light w-8"></div>
+      <p class="font-mono text-[10px] text-muted-fg tracking-widest">
+        Total — {collabs.length} collaborations
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="rule-4"></div>

@@ -1,0 +1,60 @@
+---
+import { artist } from '../data/artist';
+---
+
+<!-- Full-bleed inverted section — editorial luxury CTA -->
+<section class="relative bg-black text-white py-32 px-6 texture-v-lines-white texture-radial-white overflow-hidden">
+  <div class="relative z-10 max-w-6xl mx-auto">
+
+    <div class="reveal max-w-3xl">
+      <!-- Eyebrow -->
+      <p class="font-mono text-[10px] uppercase tracking-[0.35em] text-white/40 mb-8">
+        Stay Updated
+      </p>
+
+      <!-- Big editorial headline -->
+      <h2
+        class="font-display font-black tracking-tighter leading-none text-white mb-8"
+        style="font-size: clamp(2.5rem, 7vw, 5.5rem);"
+      >
+        第一时间获取<br/>新作发布
+      </h2>
+
+      <!-- Body -->
+      <p class="font-body text-lg sm:text-xl text-white/60 leading-relaxed max-w-lg mb-12">
+        关注网易云音乐或 Bilibili，新曲、合作、演出信息第一时间收到通知。
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4">
+        <a
+          href={artist.platforms.netease.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary-inv"
+        >
+          关注网易云音乐 ↗
+        </a>
+        <a
+          href={artist.platforms.bilibili.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-outline-inv"
+        >
+          关注 Bilibili ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Decorative oversized text (ghost, bottom-right) -->
+    <p
+      class="absolute bottom-0 right-0 font-display font-black italic text-white/[0.04] leading-none select-none pointer-events-none hidden lg:block"
+      style="font-size: 16rem; line-height: 0.85; transform: translateY(20%);"
+      aria-hidden="true"
+    >
+      J.A.C.E
+    </p>
+  </div>
+</section>
+
+<div class="rule-4 bg-black"></div>

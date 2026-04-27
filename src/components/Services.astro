@@ -1,0 +1,56 @@
+---
+import { services } from '../data/artist';
+---
+
+<section id="services" class="py-24 px-6 bg-muted">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <div class="reveal mb-14">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-fg mb-3">Work With Me</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">你可以找我做什么</h2>
+    </div>
+
+    <!--
+      Grid trick: bg-black + gap-px gives the "collapsed border grid" look
+      without z-index stacking issues. Each cell is white.
+    -->
+    <div class="reveal bg-black" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px;">
+      {services.map((s, i) => (
+        <div class="card-invert group bg-white p-8 cursor-default">
+          <!-- Index -->
+          <div class="flex items-start justify-between mb-8">
+            <div class="w-8 h-px bg-black group-hover:bg-white mt-4 transition-colors duration-100"></div>
+            <span class="font-mono text-[10px] tracking-widest text-muted-fg invert-child">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+          </div>
+
+          <!-- Title -->
+          <h3 class="font-display text-xl font-bold leading-tight mb-3">{s.title}</h3>
+
+          <!-- Description -->
+          <p class="font-body text-sm text-muted-fg invert-child leading-relaxed">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA row -->
+    <div class="reveal mt-14 pt-10 border-t-2 border-black flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div>
+        <p class="font-display text-xl font-bold mb-1">有合作想法？</p>
+        <p class="font-body text-sm text-muted-fg">欢迎通过 B 站私信或网易云评论区联系。</p>
+      </div>
+      <a
+        href="https://space.bilibili.com/35133771"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary flex-shrink-0"
+      >
+        Bilibili 私信 ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="rule-4"></div>

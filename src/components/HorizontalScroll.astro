@@ -1,0 +1,96 @@
+---
+const games = [
+  {
+    title: 'Phigros',
+    track: 'Shine After',
+    collab: 'feat. ADean',
+    year: '2020',
+    desc: '国内知名 iOS/Android 音游，以高精度下落判定和精美视觉著称。',
+    index: '01/03',
+  },
+  {
+    title: 'Spin Rhythm XD',
+    track: 'The Rhythm',
+    collab: 'feat. VESK GREEN',
+    year: '2022',
+    desc: 'Steam 好评 PC 节奏游戏，画面风格鲜明，受欧美玩家追捧。',
+    index: '02/03',
+  },
+  {
+    title: 'Bleap 闪音跃动',
+    track: 'Three two one, Fire!',
+    collab: '',
+    year: '2025',
+    desc: '新生代国产手机音游，主打高速度高动感的游戏体验。',
+    index: '03/03',
+  },
+];
+---
+
+<section class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Section header -->
+    <div class="reveal mb-10 flex items-end justify-between">
+      <div>
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-fg mb-2">Featured In</p>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">音游收录</h2>
+      </div>
+      <p class="hidden sm:block font-mono text-[10px] uppercase tracking-widest text-muted-fg">
+        ← 拖动浏览 →
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="reveal h-scroll -mx-px">
+      {games.map(g => (
+        <div
+          class="border border-black p-8 flex flex-col justify-between group hover:bg-black hover:text-white transition-colors duration-100"
+          style="width: min(300px, 82vw); margin-right: -1px;"
+        >
+          <!-- Top meta -->
+          <div class="flex items-center justify-between mb-8">
+            <span class="font-mono text-[10px] tracking-widest text-muted-fg group-hover:text-white/40">{g.year}</span>
+            <span class="font-mono text-[10px] tracking-widest text-muted-fg group-hover:text-white/40">{g.index}</span>
+          </div>
+
+          <!-- Content -->
+          <div>
+            <h3 class="font-display text-2xl font-bold leading-tight mb-2">{g.title}</h3>
+            <p class="font-mono text-xs text-muted-fg group-hover:text-white/50 mb-1">
+              《{g.track}》
+            </p>
+            {g.collab && (
+              <p class="font-mono text-[10px] tracking-widest text-muted-fg group-hover:text-white/40 mb-5">
+                {g.collab}
+              </p>
+            )}
+            {!g.collab && <div class="mb-5"></div>}
+            <p class="font-body text-sm text-muted-fg group-hover:text-white/60 leading-relaxed">
+              {g.desc}
+            </p>
+          </div>
+
+          <!-- Bottom rule + label -->
+          <div class="mt-10 pt-5 border-t border-black/20 group-hover:border-white/20">
+            <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-fg group-hover:text-white/40">
+              Rhythm Game
+            </span>
+          </div>
+        </div>
+      ))}
+
+      <!-- End card — inverted always -->
+      <div
+        class="bg-black text-white p-8 flex flex-col justify-center"
+        style="width: min(220px, 72vw); margin-right: -1px;"
+      >
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6">Still Going</p>
+        <p class="font-display text-2xl font-bold italic leading-snug">持续<br/>创作中。</p>
+        <div class="mt-8 w-8 h-px bg-white/30"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule-4"></div>

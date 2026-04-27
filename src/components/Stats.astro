@@ -1,0 +1,27 @@
+---
+import { artist } from '../data/artist';
+---
+
+<!-- Inverted black section with vertical line texture -->
+<section class="bg-black text-white py-20 px-6 texture-v-lines-white relative">
+  <div class="relative z-10 max-w-6xl mx-auto">
+    <div class="reveal grid grid-cols-2 sm:grid-cols-4">
+      {artist.stats.map((s, i) => (
+        <div class={`px-6 sm:px-10 py-10 sm:py-12 flex flex-col gap-3 ${i < artist.stats.length - 1 ? 'border-r border-white/10' : ''}`}>
+          <span
+            class="stat-num text-white"
+            data-target={s.value}
+            data-suffix={s.suffix}
+          >
+            {s.value}{s.suffix}
+          </span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+            {s.label}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<div class="rule-4"></div>
